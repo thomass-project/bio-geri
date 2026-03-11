@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        zh: ['"Noto Sans SC"', 'sans-serif'], 
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .lang-zh {
+            font-family: "Noto Sans SC", sans-serif !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-cyan-600 selection:text-white" id="main-body">
+
+    <header class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50 border-b border-slate-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-slate-800">Bio.<span class="text-cyan-700">Geri</span></div>
+            <nav class="hidden md:flex space-x-8 items-center font-medium text-sm text-slate-600">
+                <a href="#beranda" class="hover:text-cyan-700 transition-colors" data-i18n="nav_home">Beranda</a>
+                <a href="#pendidikan" class="hover:text-cyan-700 transition-colors" data-i18n="nav_edu">Pendidikan</a>
+                <a href="#pengalaman" class="hover:text-cyan-700 transition-colors" data-i18n="nav_exp">Pengalaman</a>
+                <a href="#sertifikasi" class="hover:text-cyan-700 transition-colors" data-i18n="nav_cert">Sertifikasi</a>
+                <a href="#kemampuan" class="hover:text-cyan-700 transition-colors" data-i18n="nav_skills">Kemampuan</a>
+                
+                <div class="relative group">
+                    <button class="flex items-center space-x-2 hover:text-cyan-700 transition-colors bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200" id="current-lang-btn">
+                        <span id="current-flag" class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-5 h-3.5 rounded-[5px] object-cover border border-slate-300"><rect width="600" height="400" fill="#ffffff"/><rect width="600" height="200" fill="#ce1126"/></svg>
+                        </span>
+                        <span id="current-lang-text">ID</span>
+                        <i class="fa-solid fa-chevron-down text-[10px]"></i>
+                    </button>
+                    
+                        <div class="absolute right-0 mt-2 w-44 bg-white border border-slate-100 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 overflow-hidden cursor-pointer">
+                            
+                            <div onclick="changeLanguage('id')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
+                                <span class="mr-3 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm">
+                                        <rect width="600" height="400" fill="#ffffff"/>
+                                        <rect width="600" height="200" fill="#ce1126"/>
+                                    </svg>
+                                </span> Indonesia
+                            </div>
+
+                            <div onclick="changeLanguage('en')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
+                                <span class="mr-3 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm">
+                                        <clipPath id="s">
+                                            <path d="M0,0 v40 h60 v-40 z"/>
+                                        </clipPath>
+                                        <path d="M0,0 v40 h60 v-40 z" fill="#012169"/>
+                                        <path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="6"/>
+                                        <path d="M0,0 L60,40 M60,0 L0,40" clip-path="url(#s)" stroke="#C8102E" stroke-width="4"/>
+                                        <path d="M30,0 v40 M0,20 h60" stroke="#fff" stroke-width="10"/>
+                                        <path d="M30,0 v40 M0,20 h60" stroke="#C8102E" stroke-width="6"/>
+                                    </svg>
+                                </span> English
+                            </div>
+
+                            <div onclick="changeLanguage('zh')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
+                                <span class="mr-3 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm">
+                                        <rect width="900" height="600" fill="#ee1c25"/>
+                                        <g fill="#ffef00">
+                                            <polygon points="150,55 179,145 269,145 197,200 224,290 150,235 76,290 103,200 31,145 121,145" />
+                                            <polygon points="300,30 312,65 349,65 319,87 330,123 300,101 270,123 281,87 251,65 288,65" transform="rotate(23 300 76)" />
+                                            <polygon points="360,110 372,145 409,145 379,167 390,203 360,181 330,203 341,167 311,145 348,145" transform="rotate(45 360 156)" />
+                                            <polygon points="360,220 372,255 409,255 379,277 390,313 360,291 330,313 341,277 311,255 348,255" transform="rotate(70 360 266)" />
+                                            <polygon points="300,320 312,355 349,355 319,377 330,413 300,391 270,413 281,377 251,355 288,355" transform="rotate(20 300 366)" />
+                                        </g>
+                                    </svg>
+                                </span> Mandarin
+                            </div>
+
+                            <div onclick="changeLanguage('nl')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
+                                <span class="mr-3 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm">
+                                        <rect width="900" height="200" fill="#AE1C28"/>
+                                        <rect y="200" width="900" height="200" fill="#ffffff"/>
+                                        <rect y="400" width="900" height="200" fill="#21468B"/>
+                                    </svg>
+                                </span> Dutch
+                            </div>
+
+                            <div onclick="changeLanguage('su')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
+                                <span class="mr-3 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm">
+                                        <rect width="600" height="400" fill="#009A44"/>
+                                        <rect y="133.33" width="600" height="133.33" fill="#ffffff"/>
+                                    </svg>
+                                </span> Sundanese
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="beranda" class="pt-36 pb-20 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center lg:items-start gap-12">
+                
+               <div class="w-56 h-56 lg:w-72 lg:h-72 flex-shrink-0 relative group">
+                    <img src="https://lh3.googleusercontent.com/d/1W3yhr2fT-FvTs1kvNLFekDAW5W4ex0A6" 
+                        alt="Foto Profil" 
+                        class="w-full h-full object-cover rounded-3xl shadow-lg border border-slate-100 relative z-10">
+                </div>
+                
+                <div class="flex-1 flex flex-col xl:flex-row xl:justify-between xl:items-start gap-8 w-full">
+                    <div class="space-y-4 flex-1 text-center lg:text-left">
+                        <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight">Geri Maulana Saputra</h1>
+                        <p class="text-xl text-cyan-700 font-semibold" data-i18n="student">Mahasiswa</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-slate-600 mt-6 text-sm lg:text-base text-left bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-cake-candles text-slate-400 w-4"></i> <strong data-i18n="born">Lahir:</strong> <span data-i18n="city_bogor">Bogor, 24/05/2005</span></p>
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-phone text-slate-400 w-4"></i> <strong data-i18n="phone">Telepon:</strong> +62-858-1013-7498</p>
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-user text-slate-400 w-4"></i> <strong data-i18n="status">Status:</strong> <span data-i18n="student_status">Mahasiswa</span></p>
+                            <p class="flex items-center gap-2"><i class="fa-solid fa-flag text-slate-400 w-4"></i> <strong data-i18n="nationality">Kewarganegaraan:</strong> <span data-i18n="indonesia">Indonesia</span></p>
+                            <p class="flex items-center gap-2 sm:col-span-2"><i class="fa-solid fa-location-dot text-slate-400 w-4"></i> <strong data-i18n="address">Domisili:</strong> <span data-i18n="address_detail">Kel. Loji, Kota Bogor, Prov. Jawa Barat</span></p>
+                        </div>
+
+                        <div class="flex justify-center lg:justify-start space-x-4 mt-8">
+                            <a href="https://www.linkedin.com/in/geri-maulana-saputra-ba3982279/" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-cyan-700 hover:text-white transition-all"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+                            <a href="https://www.instagram.com/thomy.aa/" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-cyan-700 hover:text-white transition-all"><i class="fa-brands fa-instagram text-lg"></i></a>
+                            <a href="[Link GitHub]" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-cyan-700 hover:text-white transition-all"><i class="fa-brands fa-github text-lg"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row xl:flex-col justify-center gap-4 mt-6 xl:mt-0 flex-shrink-0">
+                        <a href="https://drive.google.com/file/d/16NuerzFq2HzLfp3tr2Mzt1WwSEXIKNSH/view?usp=drive_link" target="_blank" class="px-7 py-3.5 bg-cyan-700 text-white font-semibold rounded-xl shadow-md hover:-translate-y-1 hover:bg-cyan-800 transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-briefcase"></i>
+                            <span data-i18n="btn_portfolio">Lihat Portofolio</span>
+                        </a>
+                        <a href="https://drive.google.com/file/d/1JQFVLmAzj_Fu5dxzwGH7PuiZ-CzQASxi/view?usp=sharing" target="_blank" class="px-7 py-3.5 bg-white text-slate-700 font-semibold rounded-xl border border-slate-300 hover:border-cyan-700 hover:text-cyan-700 hover:-translate-y-1 transition-all flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <span data-i18n="btn_cv">Lihat CV</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pendidikan" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="flex items-center gap-3 mb-12 border-b border-slate-200 pb-4">
+                <i class="fa-solid fa-graduation-cap text-2xl text-cyan-700"></i>
+                <h2 class="text-3xl font-bold text-slate-900" data-i18n="title_edu">Pendidikan</h2>
+            </div>
+            
+            <div class="relative border-l-2 border-slate-300 ml-4 md:ml-6 space-y-12">
+                
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute w-4 h-4 rounded-full bg-white border-[4px] border-cyan-700 -left-[9px] top-1.5"></div>
+                    <div class="bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                        <span class="inline-block px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-full mb-3 border border-slate-200" data-i18n="edu_s1">S1 • 2023 - Sekarang</span>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1" data-i18n="uni_uin">UIN Syarif Hidayatullah Jakarta</h3>
+                        <div class="text-slate-600 text-sm space-y-1 mt-3">
+                            <p><strong class="text-slate-800" data-i18n="lbl_fac">Fakultas:</strong> <span data-i18n="val_fac_fitk">Ilmu Tarbiyah dan Keguruan</span></p>
+                            <p><strong class="text-slate-800" data-i18n="lbl_major">Program Studi:</strong> <span data-i18n="val_major_mp">Manajemen Pendidikan</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute w-4 h-4 rounded-full bg-white border-[4px] border-slate-400 -left-[9px] top-1.5"></div>
+                    <h3 class="text-lg font-bold text-slate-800" data-i18n="uni_smk">SMK Negeri 1 Ciomas</h3>
+                    <p class="text-slate-500 text-sm mb-1"><span data-i18n="lbl_grad">Tahun Lulus:</span> 2023</p>
+                    <p class="text-slate-600 text-sm"><strong class="text-slate-800" data-i18n="lbl_jurusan">Jurusan:</strong> <span data-i18n="val_jur_anim">Animasi</span></p>
+                </div>
+
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute w-4 h-4 rounded-full bg-white border-[4px] border-slate-400 -left-[9px] top-1.5"></div>
+                    <h3 class="text-lg font-bold text-slate-800" data-i18n="uni_smp">SMP Negeri 7 Bogor</h3>
+                    <p class="text-slate-500 text-sm"><span data-i18n="lbl_grad">Tahun Lulus:</span> 2020</p>
+                </div>
+
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute w-4 h-4 rounded-full bg-white border-[4px] border-slate-400 -left-[9px] top-1.5"></div>
+                    <h3 class="text-lg font-bold text-slate-800" data-i18n="uni_sd">SD Negeri Gunung Batu 1</h3>
+                    <p class="text-slate-500 text-sm"><span data-i18n="lbl_grad">Tahun Lulus:</span> 2017</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="pengalaman" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="flex items-center gap-3 mb-12 border-b border-slate-200 pb-4">
+                <i class="fa-solid fa-briefcase text-2xl text-cyan-700"></i>
+                <h2 class="text-3xl font-bold text-slate-900" data-i18n="title_exp">Pengalaman & Organisasi</h2>
+            </div>
+
+            <div class="mb-16">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2"><i class="fa-solid fa-minus text-cyan-700"></i> <span data-i18n="exp_intern">Pengalaman Magang</span></h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-50 p-7 rounded-2xl border border-slate-200 hover:-translate-y-1 hover:shadow-md transition-all">
+                        <span class="text-xs font-bold bg-white text-slate-700 px-3 py-1 rounded-full mb-4 inline-block border border-slate-300" data-i18n="badge_pkl">Praktik Kerja Lapangan (PKL)</span>
+                        <h4 class="text-lg font-bold text-slate-900">3D Design</h4>
+                        <p class="text-md text-cyan-700 font-semibold mb-3" data-i18n="comp_pei">Politeknik Enjinering Indorama, Purwakarta</p>
+                        <p class="text-sm text-slate-500 mb-4 flex items-center gap-2"><i class="fa-regular fa-calendar"></i> <span data-i18n="date_pei">Agustus - Desember 2022</span></p>
+                        <div class="space-y-2 text-justify text-sm text-slate-600">
+                            <p><strong class="text-slate-800 block mb-1" data-i18n="lbl_jobdesk">Jobdesk:</strong> <span data-i18n="desc_pei">Membuat Perancangan Desain (Pra Produksi Film Animasi), Desain 3D Properti yang terdapat di PEI, Desain Interior dan Eksterior yang terdapat di PEI, dan Finishing dan Rendering (Pasca Produksi Film Animasi)</span></p>
+                            <p><strong class="text-slate-800 block mb-1 mt-3" data-i18n="lbl_result">Produk/Hasil:</strong> <span data-i18n="res_pei">Film Animasi pengenalan kampus Politeknik Enjinering Indorama</span></p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-7 rounded-2xl border border-slate-200 hover:-translate-y-1 hover:shadow-md transition-all">
+                        <span class="text-xs font-bold bg-white text-slate-700 px-3 py-1 rounded-full mb-4 inline-block border border-slate-300" data-i18n="badge_intern">Magang</span>
+                        <h4 class="text-lg font-bold text-slate-900" data-i18n="title_web">Website Management</h4>
+                        <p class="text-md text-cyan-700 font-semibold mb-3" data-i18n="comp_uin">Kemahasiswaan, UIN Syarif Hidayatullah Jakarta</p>
+                        <p class="text-sm text-slate-500 mb-4 flex items-center gap-2"><i class="fa-regular fa-calendar"></i> <span data-i18n="date_uin">Oktober - Desember 2025</span></p>
+                        <div class="space-y-2 text-sm text-slate-600">
+                            <p><strong class="text-slate-800 block mb-1" data-i18n="lbl_jobdesk">Jobdesk:</strong> <span data-i18n="desc_uin">Menjadi editor untuk artikel-artikel yang akan diupload di Website Kemahasiswaan. Memperbaiki Interface Website Kemahasiswaan</span></p>
+                            <p><strong class="text-slate-800 block mb-1 mt-3" data-i18n="lbl_result">Produk/Hasil:</strong> <span data-i18n="res_uin">Proposal Interface Website</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-16">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2"><i class="fa-solid fa-minus text-cyan-700"></i> <span data-i18n="exp_org">Pengalaman Organisasi</span></h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:-translate-y-1 transition-all hover:shadow-md relative overflow-hidden flex items-center gap-5">
+                        <div class="absolute top-0 right-0 bg-slate-500 text-white text-[10px] uppercase font-bold px-4 py-1.5 rounded-bl-xl tracking-wider" data-i18n="stat_active">Aktif</div>
+                        
+                        <div class="flex-shrink-0">
+                            <div class="w-20 h-20 md:w-32 md:h-32 bg-white rounded-xl overflow-hidden flex items-center justify-center p-2">
+                                <img src="https://lh3.googleusercontent.com/d/1szoEUzCqi0kej0on4KHuSQcn8s1FB0Ht" referrerpolicy="no-referrer" alt="Syahid MUN" class="object-contain w-full h-full">
+                            </div>
+                        </div>
+
+                        <div class="flex-1">
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1 block" data-i18n="badge_org">Organisasi</span>
+                            <h4 class="text-lg font-bold text-slate-900">Syahid MUN (Model United Nations)</h4>
+                            <p class="text-sm text-slate-500 mb-3 mt-1 flex items-center gap-2"><i class="fa-regular fa-calendar"></i> <span data-i18n="date_mun">Jan 2026 - Sekarang</span></p>
+                            <p class="text-sm text-slate-700 bg-white p-2 rounded-lg border border-slate-200"><strong class="text-slate-900" data-i18n="lbl_div">Divisi:</strong> <span data-i18n="div_creative">Creative Design</span></p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:-translate-y-1 hover:shadow-md transition-all flex items-center gap-5">
+                        <div class="flex-shrink-0">
+                            <div class="w-20 h-20 md:w-32 md:h-32 bg-white rounded-xl overflow-hidden flex items-center justify-center p-2">
+                                <img src="https://lh3.googleusercontent.com/d/1-ut4U1dy7_I9aEgHhcxRaGYrsac_gkPf" referrerpolicy="no-referrer" alt="DEMA FITK" class="object-contain w-full h-full">
+                            </div>
+                        </div>
+
+                        <div class="flex-1">
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-1 block" data-i18n="stat_inactive">Tidak Aktif</span>
+                            <h4 class="text-lg font-bold text-slate-900">DEMA FITK</h4>
+                            <p class="text-sm text-slate-500 mb-3 mt-1 flex items-center gap-2"><i class="fa-regular fa-calendar"></i> <span data-i18n="date_dema">Maret - Des 2025</span></p>
+                            <p class="text-sm text-slate-700 bg-slate-50 p-2 rounded-lg border border-slate-200"><strong class="text-slate-900" data-i18n="lbl_div">Divisi:</strong> <span data-i18n="div_lang">Pengembangan Bahasa</span></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2"><i class="fa-solid fa-minus text-cyan-700"></i> <span data-i18n="exp_other">Pengalaman Lainnya</span></h3>
+                
+                <div class="bg-slate-50 p-7 rounded-2xl border border-slate-200 mb-6 hover:-translate-y-1 hover:shadow-md transition-all">
+                    <span class="text-xs font-bold bg-white text-slate-700 px-3 py-1 rounded-full mb-4 inline-block border border-slate-300" data-i18n="badge_mobility">Student Mobility</span>
+                    <h4 class="text-lg font-bold text-slate-900">Winter Camp FITK</h4>
+                    <p class="text-md text-cyan-700 font-semibold mb-3" data-i18n="uni_yunnan">Yunnan University</p>
+                    <div class="flex flex-wrap gap-4 text-sm text-slate-500 mb-4">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot"></i> <span data-i18n="loc_yunnan">Yunnan, China</span></span>
+                        <span class="flex items-center gap-2"><i class="fa-regular fa-calendar"></i> <span data-i18n="date_yunnan">10-20 November 2025</span></span>
+                    </div>
+                    <p class="text-sm text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-200 mb-5"><strong class="text-slate-800 block mb-1" data-i18n="lbl_focus">Fokus Utama:</strong> <span data-i18n="desc_yunnan">Mempelajari Bahasa Mandarin, Software AI pendidikan di China, Kultur dan Budaya China</span></p>
+                    
+                    <a href="#" target="_blank" class="inline-flex py-2 px-6 bg-white text-slate-700 border border-slate-300 hover:text-white hover:bg-cyan-700 hover:border-cyan-700 text-xs font-bold rounded-lg transition-all items-center justify-center gap-2"><i class="fa-solid fa-file-pdf"></i> <span data-i18n="btn_cert_see">Lihat Sertifikat</span></a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-all flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2 block" data-i18n="badge_committee">Kepanitiaan</span>
+                            <h4 class="text-md font-bold text-slate-900 leading-tight mb-1">PBAK FITK 2024</h4>
+                            <p class="text-xs text-cyan-700 font-semibold mb-3" data-i18n="val_fac_fitk">Fakultas Ilmu Tarbiyah dan Keguruan</p>
+                            <div class="text-justify space-y-1.5 text-xs text-slate-600 mb-5">
+                                <p><strong class="text-slate-800" data-i18n="lbl_div">Divisi:</strong> Sponsorship</p>
+                                <p><strong class="text-slate-800" data-i18n="lbl_dur">Durasi:</strong> <span data-i18n="dur_3m">3 Bulan</span></p>
+                                <p><strong class="text-slate-800 block mb-0.5" data-i18n="lbl_jobdesk">Jobdesk:</strong> <span data-i18n="desc_pbak">Mencari Perusahaan yang bersedia untuk menjadi sponsor, Menjual produk sponsor</span></p>
+                            </div>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1ZTWxfc827p5IDOkQkkcSaiG0KdNXpNHV/view?usp=sharing" target="_blank" class="w-full py-2 bg-slate-50 hover:bg-cyan-700 text-slate-700 hover:text-white hover:border-cyan-700 border border-slate-200 text-xs font-bold rounded-lg transition-all flex justify-center items-center gap-2"><i class="fa-solid fa-file-pdf"></i> <span data-i18n="btn_cert_short">Sertifikat</span></a>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-all flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2 block" data-i18n="badge_committee">Kepanitiaan</span>
+                            <h4 class="text-md font-bold text-slate-900 leading-tight mb-1">Training of Leadership MP 2024</h4>
+                            <p class="text-xs text-cyan-700 font-semibold mb-3" data-i18n="sub_mp">Program Studi Manajemen Pendidikan</p>
+                            <div class="space-y-1.5 text-xs text-slate-600 mb-5">
+                                <p><strong class="text-slate-800" data-i18n="lbl_div">Divisi:</strong> PDD</p>
+                                <p><strong class="text-slate-800" data-i18n="lbl_dur">Durasi:</strong> <span data-i18n="dur_3m">3 Bulan</span></p>
+                                <p><strong class="text-slate-800 block mb-0.5" data-i18n="lbl_jobdesk">Jobdesk:</strong> <span data-i18n="desc_tol">Mendokumentasikan seluruh kegiatan, Mendesain poster</span></p>
+                            </div>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1OAyx8fvmPYMNp5xWkBNHctgP1z5QIgue/view?usp=sharing" target="_blank" class="w-full py-2 bg-slate-50 hover:bg-cyan-700 text-slate-700 hover:text-white hover:border-cyan-700 border border-slate-200 text-xs font-bold rounded-lg transition-all flex justify-center items-center gap-2"><i class="fa-solid fa-file-pdf"></i> <span data-i18n="btn_cert_short">Sertifikat</span></a>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-all flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2 block" data-i18n="badge_committee">Kepanitiaan</span>
+                            <h4 class="text-md font-bold text-slate-900 leading-tight mb-1">Upgrading & Raker HMPS MP</h4>
+                            <p class="text-xs text-cyan-700 font-semibold mb-3">HMPS Manajemen Pendidikan</p>
+                            <div class="space-y-1.5 text-xs text-slate-600 mb-5">
+                                <p><strong class="text-slate-800" data-i18n="lbl_div">Divisi:</strong> <span data-i18n="div_food">Konsumsi</span></p>
+                                <p><strong class="text-slate-800" data-i18n="lbl_dur">Durasi:</strong> <span data-i18n="dur_1m">1 Bulan</span></p>
+                                <p><strong class="text-slate-800 block mb-0.5" data-i18n="lbl_jobdesk">Jobdesk:</strong> <span data-i18n="desc_hmps1">Menyediakan dan memastikan konsumsi selama acara terpenuhi</span></p>
+                            </div>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1Mvv103pawjfCbuLyI3PNvbqZjdCrft3S/view?usp=sharing" target="_blank" class="w-full py-2 bg-slate-50 hover:bg-cyan-700 text-slate-700 hover:text-white hover:border-cyan-700 border border-slate-200 text-xs font-bold rounded-lg transition-all flex justify-center items-center gap-2"><i class="fa-solid fa-file-pdf"></i> <span data-i18n="btn_cert_short">Sertifikat</span></a>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:shadow-md transition-all flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2 block" data-i18n="badge_committee">Kepanitiaan</span>
+                            <h4 class="text-md font-bold text-slate-900 leading-tight mb-1">Workshop Microsoft Office</h4>
+                            <p class="text-xs text-cyan-700 font-semibold mb-3">HMPS Manajemen Pendidikan</p>
+                            <div class="space-y-1.5 text-xs text-slate-600 mb-5">
+                                <p><strong class="text-slate-800" data-i18n="lbl_div">Divisi:</strong> PDD</p>
+                                <p><strong class="text-slate-800" data-i18n="lbl_dur">Durasi:</strong> <span data-i18n="dur_2m">2 Bulan</span></p>
+                                <p><strong class="text-slate-800 block mb-0.5" data-i18n="lbl_jobdesk">Jobdesk:</strong> <span data-i18n="desc_hmps2">Mendokumentasikan seluruh kegiatan</span></p>
+                            </div>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1JWKdNE-9qunGVNe5lYrvw9nmefwRBAiH/view?usp=sharing" target="_blank" class="w-full py-2 bg-slate-50 hover:bg-cyan-700 text-slate-700 hover:text-white hover:border-cyan-700 border border-slate-200 text-xs font-bold rounded-lg transition-all flex justify-center items-center gap-2"><i class="fa-solid fa-file-pdf"></i> <span data-i18n="btn_cert_short">Sertifikat</span></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="sertifikasi" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="flex items-center gap-3 mb-12 border-b border-slate-200 pb-4">
+                <i class="fa-solid fa-certificate text-2xl text-cyan-700"></i>
+                <h2 class="text-3xl font-bold text-slate-900" data-i18n="title_cert">Sertifikasi & Pelatihan</h2>
+            </div>
+            
+            <div class="overflow-x-auto bg-white rounded-2xl shadow-sm border border-slate-200">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                            <th class="py-5 px-6 font-bold text-sm uppercase tracking-wider" data-i18n="th_name">Nama Pelatihan / Sertifikasi</th>
+                            <th class="py-5 px-6 font-bold text-sm uppercase tracking-wider w-40 text-center" data-i18n="th_link">Tautan</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-sm">
+                        <tr class="hover:bg-slate-50 transition-colors group">
+                            <td class="py-4 px-6 text-slate-800 font-medium group-hover:text-cyan-700 transition-colors">AI Upskilling Program (Remote Skills Academy with Google.org & ADB)</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://drive.google.com/file/d/1nZ91OD8r2iEAtlLcxGZMWrcmo8UI3LF-/view?usp=drive_link" target="_blank" class="inline-flex items-center justify-center px-4 py-1.5 bg-white text-slate-700 font-semibold rounded-lg border border-slate-300 hover:bg-cyan-700 hover:border-cyan-700 hover:text-white transition-all w-full">
+                                    <i class="fa-solid fa-file-pdf mr-2"></i> <span data-i18n="btn_cert_short">Sertifikat</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors group">
+                            <td class="py-4 px-6 text-slate-800 font-medium group-hover:text-cyan-700 transition-colors">HCIA-AI V4.0 Course (Huawei ICT Academy)</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://drive.google.com/file/d/1-r1qWFwnGUR_Il6GCGQIlKh4UdF1UGeV/view?usp=drive_link" target="_blank" class="inline-flex items-center justify-center px-4 py-1.5 bg-white text-slate-700 font-semibold rounded-lg border border-slate-300 hover:bg-cyan-700 hover:border-cyan-700 hover:text-white transition-all w-full">
+                                    <i class="fa-solid fa-file-pdf mr-2"></i> <span data-i18n="btn_cert_short">Sertifikat</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors group">
+                            <td class="py-4 px-6 text-slate-800 font-medium group-hover:text-cyan-700 transition-colors" data-i18n="cert_kemenag">Pelatihan Metodologi Pembelajaran (Kementerian Agama)</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://drive.google.com/file/d/10jYGRjxl1bFZraDltHKMb-Im5yJkUyHV/view?usp=sharing" target="_blank" class="inline-flex items-center justify-center px-4 py-1.5 bg-white text-slate-700 font-semibold rounded-lg border border-slate-300 hover:bg-cyan-700 hover:border-cyan-700 hover:text-white transition-all w-full">
+                                    <i class="fa-solid fa-file-pdf mr-2"></i> <span data-i18n="btn_cert_short">Sertifikat</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors group">
+                            <td class="py-4 px-6 text-slate-800 font-medium group-hover:text-cyan-700 transition-colors">Video-Based Micro Media (SEAMOLEC)</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://drive.google.com/file/d/1mKDIlxyv9AobWCc8w5ERn9AsDmOfCRnV/view?usp=sharing" target="_blank" class="inline-flex items-center justify-center px-4 py-1.5 bg-white text-slate-700 font-semibold rounded-lg border border-slate-300 hover:bg-cyan-700 hover:border-cyan-700 hover:text-white transition-all w-full">
+                                    <i class="fa-solid fa-file-pdf mr-2"></i> <span data-i18n="btn_cert_short">Sertifikat</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors group">
+                            <td class="py-4 px-6 text-slate-800 font-medium group-hover:text-cyan-700 transition-colors">Data Analysis using Microsoft Excel (Coursera)</td>
+                            <td class="py-4 px-6 text-center">
+                                <a href="https://drive.google.com/file/d/16wKx7d4w2ntHl4_AuwLpPox4QfH7P5O9/view?usp=sharing" target="_blank" class="inline-flex items-center justify-center px-4 py-1.5 bg-white text-slate-700 font-semibold rounded-lg border border-slate-300 hover:bg-cyan-700 hover:border-cyan-700 hover:text-white transition-all w-full">
+                                    <i class="fa-solid fa-file-pdf mr-2"></i> <span data-i18n="btn_cert_short">Sertifikat</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors group">
+                            <td class="py-4 px-6 text-slate-800 font-medium group-hover:text-cyan-700 transition-colors">Business Analysis & Process Management (Coursera)</td>
+                            <td class="py-4 px-6">
+                                <div class="flex flex-col sm:flex-row gap-2 justify-center items-center w-full min-w-[160px]">
+                                    <a href="https://www.coursera.org/account/accomplishments/verify/UG4EYKTTN6EP" target="_blank" class="inline-flex items-center justify-center px-3 py-1.5 bg-white text-slate-700 font-semibold rounded-lg border border-slate-300 hover:bg-cyan-700 hover:border-cyan-700 hover:text-white transition-all w-full text-xs">
+                                        <i class="fa-solid fa-link mr-1"></i> <span data-i18n="btn_cred">Kredensial</span>
+                                    </a>
+                                    <a href="https://drive.google.com/file/d/11WKhPrkSE3PR94V7EoCrtEq3ydspPxaR/view?usp=sharing" target="_blank" class="inline-flex items-center justify-center px-3 py-1.5 bg-white text-slate-700 font-semibold rounded-lg border border-slate-300 hover:bg-cyan-700 hover:border-cyan-700 hover:text-white transition-all w-full text-xs">
+                                        <i class="fa-solid fa-file-pdf mr-1"></i> <span data-i18n="btn_cert_short">Sertifikat</span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="kemampuan" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                
+                <div>
+                    <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
+                        <i class="fa-solid fa-bolt text-2xl text-cyan-700"></i>
+                        <h2 class="text-3xl font-bold text-slate-900" data-i18n="title_skills">Keahlian</h2>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 mb-8">
+                        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><i class="fa-solid fa-laptop-code text-slate-500"></i> <span data-i18n="skill_hard">Hard Skill</span></h3>
+                        <ul class="space-y-3 text-sm text-slate-700 font-medium">
+                            <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-700"></div>Database Management</li>
+                            <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-700"></div>Data Analysis</li>
+                            <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-700"></div>Website Development</li>
+                            <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-700"></div>3D Design (Blender)</li>
+                            <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-700"></div>Microsoft Office (Word, PPt, Excel)</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><i class="fa-solid fa-users text-slate-500"></i> <span data-i18n="skill_soft">Soft Skill</span></h3>
+                        <ul class="space-y-3 text-sm text-slate-700 font-medium">
+                            <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-700"></div><span data-i18n="soft1">Adaptabilitas</span></li>
+                            <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-700"></div><span data-i18n="soft2">Berpikir Kritis</span></li>
+                            <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-700"></div><span data-i18n="soft3">Analis</span></li>
+                            <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-cyan-700"></div><span data-i18n="soft4">Kerjasama & Kolaborasi</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center gap-3 mb-8 border-b border-slate-200 pb-4">
+                        <i class="fa-solid fa-language text-2xl text-cyan-700"></i>
+                        <h2 class="text-3xl font-bold text-slate-900" data-i18n="title_lang">Bahasa</h2>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 space-y-7">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-bold text-slate-800" data-i18n="lang1">Bahasa Sunda</span>
+                                <span class="text-xs font-bold px-2 py-1 bg-white border border-slate-200 text-cyan-800 rounded-md">Native</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-cyan-700 h-2 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-bold text-slate-800" data-i18n="lang2">Bahasa Indonesia</span>
+                                <span class="text-xs font-bold px-2 py-1 bg-white border border-slate-200 text-cyan-800 rounded-md">Native</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-cyan-700 h-2 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-bold text-slate-800" data-i18n="lang3">Bahasa Inggris</span>
+                                <span class="text-xs font-bold px-2 py-1 bg-white border border-slate-200 text-cyan-800 rounded-md">Advanced</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-cyan-700 h-2 rounded-full" style="width: 82%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-bold text-slate-800" data-i18n="lang4">Mandarin</span>
+                                <span class="text-xs font-bold px-2 py-1 bg-white border border-slate-200 text-cyan-800 rounded-md">Basic (HSK 1)</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-2">
+                                <div class="bg-cyan-700 h-2 rounded-full" style="width: 20%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white text-slate-500 py-8 text-center border-t border-slate-200">
+        <p class="text-sm font-medium" data-i18n="footer_text">© 2026 Geri Maulana Saputra.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            id: {
+                nav_home: "Beranda", nav_edu: "Pendidikan", nav_exp: "Pengalaman", nav_cert: "Sertifikasi", nav_skills: "Kemampuan",
+                title_edu: "Pendidikan", title_exp: "Pengalaman & Organisasi", title_cert: "Sertifikasi & Pelatihan", title_skills: "Keahlian", title_lang: "Bahasa",
+                student: "Mahasiswa", born: "Lahir:", phone: "Telepon:", status: "Status:", student_status: "Mahasiswa",
+                nationality: "Kewarganegaraan:", indonesia: "Indonesia", address: "Domisili:", btn_portfolio: "Lihat Portofolio", btn_cv: "Lihat CV",
+                city_bogor: "Bogor, 24/05/2005", address_detail: "Kel. Loji, Kota Bogor, Prov. Jawa Barat",
+                edu_s1: "S1 • 2023 - Sekarang", uni_uin: "UIN Syarif Hidayatullah Jakarta", lbl_fac: "Fakultas:", val_fac_fitk: "Ilmu Tarbiyah dan Keguruan",
+                lbl_major: "Program Studi:", val_major_mp: "Manajemen Pendidikan", uni_smk: "SMK Negeri 1 Ciomas", lbl_grad: "Tahun Lulus:",
+                lbl_jurusan: "Jurusan:", val_jur_anim: "Animasi", uni_smp: "SMP Negeri 7 Bogor", uni_sd: "SD Negeri Gunung Batu 1",
+                exp_intern: "Pengalaman Magang", badge_pkl: "Praktik Kerja Lapangan (PKL)", comp_pei: "Politeknik Enjinering Indorama, Purwakarta",
+                date_pei: "Agustus - Desember 2022", lbl_jobdesk: "Jobdesk:", desc_pei: "Membuat Perancangan Desain (Pra Produksi Film Animasi), Desain 3D Properti yang terdapat di PEI, Desain Interior dan Eksterior yang terdapat di PEI, dan Finishing dan Rendering (Pasca Produksi Film Animasi)",
+                lbl_result: "Produk/Hasil:", res_pei: "Film Animasi pengenalan kampus Politeknik Enjinering Indorama", badge_intern: "Magang",
+                title_web: "Website Management", comp_uin: "Kemahasiswaan, UIN Syarif Hidayatullah Jakarta", date_uin: "Oktober - Desember 2025",
+                desc_uin: "Menjadi editor untuk artikel-artikel yang akan diupload di Website Kemahasiswaan. Memperbaiki Interface Website Kemahasiswaan",
+                res_uin: "Proposal Interface Website", exp_org: "Pengalaman Organisasi", stat_active: "Aktif", badge_org: "Organisasi",
+                date_mun: "Jan 2026 - Sekarang", lbl_div: "Divisi:", div_creative: "Creative Design", stat_inactive: "Tidak Aktif",
+                date_dema: "Maret - Des 2025", div_lang: "Pengembangan Bahasa", exp_other: "Pengalaman Lainnya", badge_mobility: "Student Mobility",
+                uni_yunnan: "Yunnan University", loc_yunnan: "Yunnan, China", date_yunnan: "10-20 November 2025", lbl_focus: "Fokus Utama:",
+                desc_yunnan: "Mempelajari Bahasa Mandarin, Software AI pendidikan di China, Kultur dan Budaya China", btn_cert_see: "Lihat Sertifikat",
+                badge_committee: "Kepanitiaan", lbl_dur: "Durasi:", dur_3m: "3 Bulan", desc_pbak: "Mencari Perusahaan yang bersedia untuk menjadi sponsor, Menjual produk sponsor",
+                sub_mp: "Program Studi Manajemen Pendidikan", desc_tol: "Mendokumentasikan seluruh kegiatan, Mendesain poster", div_food: "Konsumsi",
+                dur_1m: "1 Bulan", desc_hmps1: "Menyediakan dan memastikan konsumsi selama acara terpenuhi", dur_2m: "2 Bulan", desc_hmps2: "Mendokumentasikan seluruh kegiatan",
+                btn_cert_short: "Sertifikat", th_name: "Nama Pelatihan / Sertifikasi", th_link: "Tautan", cert_kemenag: "Pelatihan Metodologi Pembelajaran (Kementerian Agama)",
+                btn_cred: "Kredensial", skill_hard: "Hard Skill", skill_soft: "Soft Skill", soft1: "Adaptabilitas", soft2: "Berpikir Kritis", soft3: "Analis", soft4: "Kerjasama & Kolaborasi",
+                lang1: "Bahasa Sunda", lang2: "Bahasa Indonesia", lang3: "Bahasa Inggris", lang4: "Mandarin", footer_text: "© 2026 Geri Maulana Saputra."
+            },
+            en: {
+                nav_home: "Home", nav_edu: "Education", nav_exp: "Experience", nav_cert: "Certifications", nav_skills: "Skills",
+                title_edu: "Education", title_exp: "Experience & Organizations", title_cert: "Certifications & Training", title_skills: "Skills", title_lang: "Languages",
+                student: "University Student", born: "Born:", phone: "Phone:", status: "Status:", student_status: "Student",
+                nationality: "Nationality:", indonesia: "Indonesian", address: "Domicile:", btn_portfolio: "View Portfolio", btn_cv: "View CV",
+                city_bogor: "Bogor, 24/05/2005", address_detail: "Loji, Bogor, West Java Province",
+                edu_s1: "Bachelor's • 2023 - Present", uni_uin: "Syarif Hidayatullah State Islamic University Jakarta", lbl_fac: "Faculty:", val_fac_fitk: "Educational Sciences",
+                lbl_major: "Study Program:", val_major_mp: "Education Management", uni_smk: "State Vocational High School 1 Ciomas", lbl_grad: "Graduated:",
+                lbl_jurusan: "Major:", val_jur_anim: "Animation", uni_smp: "State Junior High School 7 Bogor", uni_sd: "State Elementary School Gunung Batu 1",
+                exp_intern: "Internship Experience", badge_pkl: "Field Work Practice (PKL)", comp_pei: "Indorama Engineering Polytechnic, Purwakarta",
+                date_pei: "August - December 2022", lbl_jobdesk: "Job Desk:", desc_pei: "Creating Design Planning (Animation Film Pre-Production), 3D Design of properties at PEI, Interior and Exterior Design at PEI, and Finishing and Rendering (Animation Film Post-Production)",
+                lbl_result: "Product/Result:", res_pei: "Animation film introducing the Indorama Engineering Polytechnic campus", badge_intern: "Internship",
+                title_web: "Website Management", comp_uin: "Student Affairs, UIN Syarif Hidayatullah Jakarta", date_uin: "October - December 2025",
+                desc_uin: "Became an editor for articles to be uploaded on the Student Affairs Website. Improved the Student Affairs Website Interface.",
+                res_uin: "Website Interface Proposal", exp_org: "Organizational Experience", stat_active: "Active", badge_org: "Organization",
+                date_mun: "Jan 2026 - Present", lbl_div: "Division:", div_creative: "Creative Design", stat_inactive: "Inactive",
+                date_dema: "March - Dec 2025", div_lang: "Language Development", exp_other: "Other Experiences", badge_mobility: "Student Mobility",
+                uni_yunnan: "Yunnan University", loc_yunnan: "Yunnan, China", date_yunnan: "10-20 November 2025", lbl_focus: "Main Focus:",
+                desc_yunnan: "Studying Mandarin, Educational AI Software in China, Chinese Culture and Traditions", btn_cert_see: "View Certificate",
+                badge_committee: "Committee", lbl_dur: "Duration:", dur_3m: "3 Months", desc_pbak: "Looking for companies willing to become sponsors, selling sponsor products",
+                sub_mp: "Education Management Study Program", desc_tol: "Documenting all activities, Designing posters", div_food: "F&B Consumption",
+                dur_1m: "1 Month", desc_hmps1: "Providing and ensuring food/beverages are fulfilled during the event", dur_2m: "2 Months", desc_hmps2: "Documenting all event activities",
+                btn_cert_short: "Certificate", th_name: "Training / Certification Name", th_link: "Link", cert_kemenag: "Learning Methodology Training (Ministry of Religious Affairs)",
+                btn_cred: "Credential", skill_hard: "Hard Skills", skill_soft: "Soft Skills", soft1: "Adaptability", soft2: "Critical Thinking", soft3: "Analytical", soft4: "Teamwork & Collaboration",
+                lang1: "Sundanese", lang2: "Indonesian", lang3: "English", lang4: "Mandarin", footer_text: "© 2026 Geri Maulana Saputra."
+            },
+            zh: {
+                nav_home: "首页", nav_edu: "教育背景", nav_exp: "经验", nav_cert: "证书", nav_skills: "技能",
+                title_edu: "教育背景", title_exp: "经验与组织", title_cert: "证书与培训", title_skills: "技能", title_lang: "语言",
+                student: "大学生", born: "出生:", phone: "电话:", status: "状态:", student_status: "在校生",
+                nationality: "国籍:", indonesia: "印度尼西亚", address: "居住地:", btn_portfolio: "查看作品集", btn_cv: "查看简历",
+                city_bogor: "茂物，2005年5月24日", address_detail: "西爪哇省，茂物市，Loji村",
+                edu_s1: "本科 • 2023 - 至今", uni_uin: "雅加达沙里夫·希达亚图拉国立伊斯兰大学", lbl_fac: "学院:", val_fac_fitk: "教育科学学院",
+                lbl_major: "专业:", val_major_mp: "教育管理", uni_smk: "芝奥马斯第一国立职业高中", lbl_grad: "毕业年份:",
+                lbl_jurusan: "专业:", val_jur_anim: "动画", uni_smp: "茂物第七国立初中", uni_sd: "固农巴图第一国立小学",
+                exp_intern: "实习经验", badge_pkl: "实地实习 (PKL)", comp_pei: "普哇加达 Indorama 工程理工学院",
+                date_pei: "2022年8月 - 12月", lbl_jobdesk: "工作内容:", desc_pei: "制定设计方案（动画片前期制作），PEI内部道具3D设计，PEI室内外设计，以及后期处理与渲染（动画片后期制作）",
+                lbl_result: "产品/成果:", res_pei: "Indorama工程理工学院校园介绍动画片", badge_intern: "实习",
+                title_web: "网站管理", comp_uin: "雅加达国立伊斯兰大学，学生事务部", date_uin: "2025年10月 - 12月",
+                desc_uin: "担任学生事务网站文章的编辑。优化学生事务网站的界面",
+                res_uin: "网站界面提案", exp_org: "组织经验", stat_active: "活跃", badge_org: "组织",
+                date_mun: "2026年1月 - 至今", lbl_div: "部门:", div_creative: "创意设计", stat_inactive: "非活跃",
+                date_dema: "2025年3月 - 12月", div_lang: "语言发展", exp_other: "其他经验", badge_mobility: "学生交流",
+                uni_yunnan: "云南大学", loc_yunnan: "中国云南", date_yunnan: "2025年11月10日 - 20日", lbl_focus: "主要重点:",
+                desc_yunnan: "学习汉语、中国教育AI软件、中国文化与传统", btn_cert_see: "查看证书",
+                badge_committee: "委员会", lbl_dur: "持续时间:", dur_3m: "3个月", desc_pbak: "寻找愿意成为赞助商的公司，销售赞助产品",
+                sub_mp: "教育管理专业", desc_tol: "记录所有活动，设计海报", div_food: "餐饮部",
+                dur_1m: "1个月", desc_hmps1: "提供并确保活动期间的餐饮需求", dur_2m: "2个月", desc_hmps2: "记录所有活动",
+                btn_cert_short: "证书", th_name: "培训 / 证书名称", th_link: "链接", cert_kemenag: "学习方法培训（宗教事务部）",
+                btn_cred: "凭证", skill_hard: "硬技能", skill_soft: "软技能", soft1: "适应能力", soft2: "批判性思维", soft3: "分析能力", soft4: "团队合作",
+                lang1: "巽他语", lang2: "印尼语", lang3: "英语", lang4: "普通话", footer_text: "© 2026 Geri Maulana Saputra."
+            },
+            nl: {
+                nav_home: "Startpagina", nav_edu: "Opleiding", nav_exp: "Ervaring", nav_cert: "Certificeringen", nav_skills: "Vaardigheden",
+                title_edu: "Opleiding", title_exp: "Ervaring & Organisaties", title_cert: "Certificeringen & Training", title_skills: "Vaardigheden", title_lang: "Talen",
+                student: "Universiteitsstudent", born: "Geboren:", phone: "Telefoon:", status: "Status:", student_status: "Student",
+                nationality: "Nationaliteit:", indonesia: "Indonesisch", address: "Adres:", btn_portfolio: "Bekijk Portfolio", btn_cv: "Bekijk CV",
+                city_bogor: "Buitenzorg, 24/05/2005", address_detail: "Loji, Buitenzorg, Provincie West-Java",
+                edu_s1: "Bachelor • 2023 - Heden", uni_uin: "Syarif Hidayatullah Staats-Islamitische Universiteit Jakarta", lbl_fac: "Faculteit:", val_fac_fitk: "Onderwijswetenschappen",
+                lbl_major: "Studierichting:", val_major_mp: "Onderwijsmanagement", uni_smk: "Staat Beroepsschool 1 Ciomas", lbl_grad: "Geslaagd:",
+                lbl_jurusan: "Richting:", val_jur_anim: "Animatie", uni_smp: "Staat Middelbare School 7 Bogor", uni_sd: "Staat Basisschool Gunung Batu 1",
+                exp_intern: "Stage-ervaring", badge_pkl: "Veldwerk Praktijk (PKL)", comp_pei: "Indorama Engineering Polytechnic, Purwakarta",
+                date_pei: "Augustus - December 2022", lbl_jobdesk: "Functieomschrijving:", desc_pei: "Ontwerpplanning Maken (Pre-productie Animatiefilm), 3D Ontwerp van eigendommen bij PEI, Interieur en Exterieur Ontwerp bij PEI, en Afwerking en Rendering (Post-productie Animatiefilm)",
+                lbl_result: "Product/Resultaat:", res_pei: "Animatiefilm ter introductie van de campus van Indorama Engineering Polytechnic", badge_intern: "Stage",
+                title_web: "Website Management", comp_uin: "Studentenzaken, UIN Syarif Hidayatullah Jakarta", date_uin: "Oktober - December 2025",
+                desc_uin: "Gefungeerd als redacteur voor artikelen die geüpload worden op de Studentenzaken Website. Interface van de Studentenzaken Website verbeterd.",
+                res_uin: "Voorstel Website-interface", exp_org: "Organisatie-ervaring", stat_active: "Actief", badge_org: "Organisatie",
+                date_mun: "Jan 2026 - Heden", lbl_div: "Divisie:", div_creative: "Creatief Ontwerp", stat_inactive: "Inactief",
+                date_dema: "Maart - Dec 2025", div_lang: "Taalontwikkeling", exp_other: "Andere Ervaringen", badge_mobility: "Studentenmobiliteit",
+                uni_yunnan: "Yunnan University", loc_yunnan: "Yunnan, China", date_yunnan: "10-20 November 2025", lbl_focus: "Hoofdfocus:",
+                desc_yunnan: "Mandarijn leren, Educatieve AI-software in China, Chinese Cultuur en Tradities", btn_cert_see: "Bekijk Certificaat",
+                badge_committee: "Commissie", lbl_dur: "Duur:", dur_3m: "3 Maanden", desc_pbak: "Zoeken naar bedrijven die sponsor willen worden, verkopen van sponsorproducten",
+                sub_mp: "Onderwijsmanagement Studierichting", desc_tol: "Documenteren van alle activiteiten, Ontwerpen van posters", div_food: "Catering",
+                dur_1m: "1 Maand", desc_hmps1: "Verzorgen en waarborgen dat voedsel/dranken tijdens het evenement worden verstrekt", dur_2m: "2 Maanden", desc_hmps2: "Documenteren van alle evenementactiviteiten",
+                btn_cert_short: "Certificaat", th_name: "Naam Training / Certificering", th_link: "Link", cert_kemenag: "Training Leermethodiek (Ministerie van Religieuze Zaken)",
+                btn_cred: "Referentie", skill_hard: "Harde Vaardigheden", skill_soft: "Zachte Vaardigheden", soft1: "Aanpassingsvermogen", soft2: "Kritisch Denken", soft3: "Analytisch", soft4: "Samenwerking",
+                lang1: "Soendanees", lang2: "Indonesisch", lang3: "Engels", lang4: "Mandarijn", footer_text: "© 2026 Geri Maulana Saputra."
+            },
+            su: {
+                nav_home: "Tepas", nav_edu: "Atikan", nav_exp: "Pangalaman", nav_cert: "Sertipikasi", nav_skills: "Kamampuh",
+                title_edu: "Atikan", title_exp: "Pangalaman & Organisasi", title_cert: "Sertipikasi & Pelatihan", title_skills: "Keahlian", title_lang: "Basa",
+                student: "Mahasiswa", born: "Titimangsa:", phone: "Telepon:", status: "Status:", student_status: "Mahasiswa",
+                nationality: "Kawarganagaraan:", indonesia: "Indonésia", address: "Pamatuhan:", btn_portfolio: "Tingali Portopolio", btn_cv: "Tingali CV",
+                city_bogor: "Bogor, 24/05/2005", address_detail: "Kal. Loji, Kuta Bogor, Prop. Jawa Kulon",
+                edu_s1: "S1 • 2023 - Kiwari", uni_uin: "UIN Syarif Hidayatullah Jakarta", lbl_fac: "Fakultas:", val_fac_fitk: "Élmu Tarbiyah jeung Kaguruan",
+                lbl_major: "Program Studi:", val_major_mp: "Manajemén Atikan", uni_smk: "SMK Negeri 1 Ciomas", lbl_grad: "Taun Lulus:",
+                lbl_jurusan: "Jurusan:", val_jur_anim: "Animasi", uni_smp: "SMP Negeri 7 Bogor", uni_sd: "SD Negeri Gunung Batu 1",
+                exp_intern: "Pangalaman Magang", badge_pkl: "Praktik Kerja Lapangan (PKL)", comp_pei: "Politeknik Enjinering Indorama, Purwakarta",
+                date_pei: "Agustus - Désémber 2022", lbl_jobdesk: "Pancén:", desc_pei: "Nyieun Rarancang Desain (Pra Produksi Pilem Animasi), Desain 3D Properti nu aya di PEI, Desain Interior jeung Eksterior nu aya di PEI, sarta Finishing jeung Rendering (Pasca Produksi Pilem Animasi)",
+                lbl_result: "Produk/Hasil:", res_pei: "Pilem Animasi pangwanoh kampus Politeknik Enjinering Indorama", badge_intern: "Magang",
+                title_web: "Manajemén Ramatloka", comp_uin: "Kamahasiswaan, UIN Syarif Hidayatullah Jakarta", date_uin: "Oktober - Désémber 2025",
+                desc_uin: "Janten éditor pikeun artikel nu bakal diunggah di Ramatloka Kamahasiswaan. Ngalereskeun Antarbeungeut Ramatloka Kamahasiswaan",
+                res_uin: "Proposal Antarbeungeut Ramatloka", exp_org: "Pangalaman Organisasi", stat_active: "Aktif", badge_org: "Organisasi",
+                date_mun: "Jan 2026 - Kiwari", lbl_div: "Divisi:", div_creative: "Desain Kreatip", stat_inactive: "Teu Aktif",
+                date_dema: "Maret - Dés 2025", div_lang: "Pamekaran Basa", exp_other: "Pangalaman Lianna", badge_mobility: "Student Mobility",
+                uni_yunnan: "Yunnan University", loc_yunnan: "Yunnan, China", date_yunnan: "10-20 Nopémber 2025", lbl_focus: "Fokus Utama:",
+                desc_yunnan: "Diajar Basa Mandarin, Software AI atikan di China, Kultur jeung Budaya China", btn_cert_see: "Tingali Sertipikat",
+                badge_committee: "Kapanitiaan", lbl_dur: "Lilana:", dur_3m: "3 Sasih", desc_pbak: "Milari Perusahaan nu kersa janten sponsor, Ngical produk sponsor",
+                sub_mp: "Program Studi Manajemén Atikan", desc_tol: "Ngalaporkeun jeung ngadokumentasikeun sakabéh kagiatan, Ngadesain poster", div_food: "Konsumsi",
+                dur_1m: "1 Sasih", desc_hmps1: "Nyadiakeun jeung mastikeun konsumsi salila acara kacumponan", dur_2m: "2 Sasih", desc_hmps2: "Ngadokumentasikeun sakabéh kagiatan",
+                btn_cert_short: "Sertipikat", th_name: "Ngaran Pelatihan / Sertipikasi", th_link: "Tumbu", cert_kemenag: "Pelatihan Metodologi Pangajaran (Kementerian Agama)",
+                btn_cred: "Kredensial", skill_hard: "Hard Skill", skill_soft: "Soft Skill", soft1: "Adaptabilitas", soft2: "Pikiran Kritis", soft3: "Analis", soft4: "Gawe Bareng & Kolaborasi",
+                lang1: "Basa Sunda", lang2: "Basa Indonésia", lang3: "Basa Inggris", lang4: "Mandarin", footer_text: "© 2026 Geri Maulana Saputra."
+            }
+        };
+
+       const flags = {
+            id: { 
+                svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm"><rect width="600" height="400" fill="#ffffff"/><rect width="600" height="200" fill="#ce1126"/></svg>', 
+                text: "ID" 
+            },
+            en: { 
+                svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm"><clipPath id="s"><path d="M0,0 v40 h60 v-40 z"/></clipPath><path d="M0,0 v40 h60 v-40 z" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,40 M60,0 L0,40" clip-path="url(#s)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v40 M0,20 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v40 M0,20 h60" stroke="#C8102E" stroke-width="6"/></svg>', 
+                text: "EN" 
+            },
+            zh: { 
+                svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm"><rect width="900" height="600" fill="#ee1c25"/><g fill="#ffef00"><polygon points="150,55 179,145 269,145 197,200 224,290 150,235 76,290 103,200 31,145 121,145" /><polygon points="300,30 312,65 349,65 319,87 330,123 300,101 270,123 281,87 251,65 288,65" transform="rotate(23 300 76)" /><polygon points="360,110 372,145 409,145 379,167 390,203 360,181 330,203 341,167 311,145 348,145" transform="rotate(45 360 156)" /><polygon points="360,220 372,255 409,255 379,277 390,313 360,291 330,313 341,277 311,255 348,255" transform="rotate(70 360 266)" /><polygon points="300,320 312,355 349,355 319,377 330,413 300,391 270,413 281,377 251,355 288,355" transform="rotate(20 300 366)" /></g></svg>', 
+                text: "ZH" 
+            },
+            nl: { 
+                svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm"><rect width="900" height="200" fill="#AE1C28"/><rect y="200" width="900" height="200" fill="#ffffff"/><rect y="400" width="900" height="200" fill="#21468B"/></svg>', 
+                text: "NL" 
+            },
+            su: { 
+                svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm"><rect width="600" height="400" fill="#009A44"/><rect y="133.33" width="600" height="133.33" fill="#ffffff"/></svg>', 
+                text: "SU" 
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerText = translations[lang][key];
+                }
+            });
+
+            const body = document.getElementById('main-body');
+            if (lang === 'zh') {
+                body.classList.add('lang-zh');
+            } else {
+                body.classList.remove('lang-zh');
+            }
+
+            document.getElementById('current-flag').innerHTML = flags[lang].svg;
+            document.getElementById('current-lang-text').innerText = flags[lang].text;
+        }
+    </script>
+</body>
+</html>
