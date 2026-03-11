@@ -33,91 +33,68 @@
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-cyan-600 selection:text-white" id="main-body">
 
     <header class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50 border-b border-slate-200">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center relative">
             <div class="text-2xl font-bold text-slate-800">Bio.<span class="text-cyan-700">Geri</span></div>
-            <nav class="hidden md:flex space-x-8 items-center font-medium text-sm text-slate-600">
-                <a href="#beranda" class="hover:text-cyan-700 transition-colors" data-i18n="nav_home">Beranda</a>
-                <a href="#pendidikan" class="hover:text-cyan-700 transition-colors" data-i18n="nav_edu">Pendidikan</a>
-                <a href="#pengalaman" class="hover:text-cyan-700 transition-colors" data-i18n="nav_exp">Pengalaman</a>
-                <a href="#sertifikasi" class="hover:text-cyan-700 transition-colors" data-i18n="nav_cert">Sertifikasi</a>
-                <a href="#kemampuan" class="hover:text-cyan-700 transition-colors" data-i18n="nav_skills">Kemampuan</a>
+            
+            <button id="hamburger-btn" class="md:hidden text-slate-600 hover:text-cyan-700 focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+
+            <nav id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg border-b border-slate-200 p-6 flex-col space-y-5 md:static md:w-auto md:bg-transparent md:shadow-none md:border-none md:flex md:flex-row md:space-y-0 md:space-x-8 md:p-0 items-start md:items-center font-medium text-sm text-slate-600 transition-all z-40">
+                <a href="#beranda" class="hover:text-cyan-700 transition-colors w-full md:w-auto" data-i18n="nav_home">Beranda</a>
+                <a href="#pendidikan" class="hover:text-cyan-700 transition-colors w-full md:w-auto" data-i18n="nav_edu">Pendidikan</a>
+                <a href="#pengalaman" class="hover:text-cyan-700 transition-colors w-full md:w-auto" data-i18n="nav_exp">Pengalaman</a>
+                <a href="#sertifikasi" class="hover:text-cyan-700 transition-colors w-full md:w-auto" data-i18n="nav_cert">Sertifikasi</a>
+                <a href="#kemampuan" class="hover:text-cyan-700 transition-colors w-full md:w-auto" data-i18n="nav_skills">Kemampuan</a>
                 
-                <div class="relative group">
-                    <button class="flex items-center space-x-2 hover:text-cyan-700 transition-colors bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200" id="current-lang-btn">
-                        <span id="current-flag" class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-5 h-3.5 rounded-[5px] object-cover border border-slate-300"><rect width="600" height="400" fill="#ffffff"/><rect width="600" height="200" fill="#ce1126"/></svg>
-                        </span>
-                        <span id="current-lang-text">ID</span>
+                <div class="relative group w-full md:w-auto pt-2 md:pt-0 border-t md:border-none border-slate-100">
+                    <button class="flex items-center justify-between md:justify-start w-full md:w-auto space-x-2 hover:text-cyan-700 transition-colors bg-slate-100 px-3 py-1.5 rounded-lg md:rounded-full border border-slate-200" id="current-lang-btn">
+                        <div class="flex items-center space-x-2">
+                            <span id="current-flag" class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-5 h-3.5 rounded-[5px] object-cover border border-slate-300"><rect width="600" height="400" fill="#ffffff"/><rect width="600" height="200" fill="#ce1126"/></svg>
+                            </span>
+                            <span id="current-lang-text">ID</span>
+                        </div>
                         <i class="fa-solid fa-chevron-down text-[10px]"></i>
                     </button>
                     
-                        <div class="absolute right-0 mt-2 w-44 bg-white border border-slate-100 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 overflow-hidden cursor-pointer">
-                            
-                            <div onclick="changeLanguage('id')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
-                                <span class="mr-3 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm">
-                                        <rect width="600" height="400" fill="#ffffff"/>
-                                        <rect width="600" height="200" fill="#ce1126"/>
-                                    </svg>
-                                </span> Indonesia
-                            </div>
-
-                            <div onclick="changeLanguage('en')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
-                                <span class="mr-3 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm">
-                                        <clipPath id="s">
-                                            <path d="M0,0 v40 h60 v-40 z"/>
-                                        </clipPath>
-                                        <path d="M0,0 v40 h60 v-40 z" fill="#012169"/>
-                                        <path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="6"/>
-                                        <path d="M0,0 L60,40 M60,0 L0,40" clip-path="url(#s)" stroke="#C8102E" stroke-width="4"/>
-                                        <path d="M30,0 v40 M0,20 h60" stroke="#fff" stroke-width="10"/>
-                                        <path d="M30,0 v40 M0,20 h60" stroke="#C8102E" stroke-width="6"/>
-                                    </svg>
-                                </span> English
-                            </div>
-
-                            <div onclick="changeLanguage('zh')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
-                                <span class="mr-3 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm">
-                                        <rect width="900" height="600" fill="#ee1c25"/>
-                                        <g fill="#ffef00">
-                                            <polygon points="150,55 179,145 269,145 197,200 224,290 150,235 76,290 103,200 31,145 121,145" />
-                                            <polygon points="300,30 312,65 349,65 319,87 330,123 300,101 270,123 281,87 251,65 288,65" transform="rotate(23 300 76)" />
-                                            <polygon points="360,110 372,145 409,145 379,167 390,203 360,181 330,203 341,167 311,145 348,145" transform="rotate(45 360 156)" />
-                                            <polygon points="360,220 372,255 409,255 379,277 390,313 360,291 330,313 341,277 311,255 348,255" transform="rotate(70 360 266)" />
-                                            <polygon points="300,320 312,355 349,355 319,377 330,413 300,391 270,413 281,377 251,355 288,355" transform="rotate(20 300 366)" />
-                                        </g>
-                                    </svg>
-                                </span> Mandarin
-                            </div>
-
-                            <div onclick="changeLanguage('nl')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
-                                <span class="mr-3 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm">
-                                        <rect width="900" height="200" fill="#AE1C28"/>
-                                        <rect y="200" width="900" height="200" fill="#ffffff"/>
-                                        <rect y="400" width="900" height="200" fill="#21468B"/>
-                                    </svg>
-                                </span> Dutch
-                            </div>
-
-                            <div onclick="changeLanguage('su')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
-                                <span class="mr-3 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm">
-                                        <rect width="600" height="400" fill="#009A44"/>
-                                        <rect y="133.33" width="600" height="133.33" fill="#ffffff"/>
-                                    </svg>
-                                </span> Sundanese
-                            </div>
+                    <div class="absolute left-0 md:left-auto md:right-0 mt-2 w-full md:w-44 bg-white border border-slate-100 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 overflow-hidden cursor-pointer z-50">
+                        
+                        <div onclick="changeLanguage('id')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
+                            <span class="mr-3 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm"><rect width="600" height="400" fill="#ffffff"/><rect width="600" height="200" fill="#ce1126"/></svg>
+                            </span> Indonesia
                         </div>
-                    </div>
+
+                        <div onclick="changeLanguage('en')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
+                            <span class="mr-3 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm"><clipPath id="s"><path d="M0,0 v40 h60 v-40 z"/></clipPath><path d="M0,0 v40 h60 v-40 z" fill="#012169"/><path d="M0,0 L60,40 M60,0 L0,40" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,40 M60,0 L0,40" clip-path="url(#s)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v40 M0,20 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v40 M0,20 h60" stroke="#C8102E" stroke-width="6"/></svg>
+                            </span> English
+                        </div>
+
+                        <div onclick="changeLanguage('zh')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
+                            <span class="mr-3 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm"><rect width="900" height="600" fill="#ee1c25"/><g fill="#ffef00"><polygon points="150,55 179,145 269,145 197,200 224,290 150,235 76,290 103,200 31,145 121,145" /><polygon points="300,30 312,65 349,65 319,87 330,123 300,101 270,123 281,87 251,65 288,65" transform="rotate(23 300 76)" /><polygon points="360,110 372,145 409,145 379,167 390,203 360,181 330,203 341,167 311,145 348,145" transform="rotate(45 360 156)" /><polygon points="360,220 372,255 409,255 379,277 390,313 360,291 330,313 341,277 311,255 348,255" transform="rotate(70 360 266)" /><polygon points="300,320 312,355 349,355 319,377 330,413 300,391 270,413 281,377 251,355 288,355" transform="rotate(20 300 366)" /></g></svg>
+                            </span> Mandarin
+                        </div>
+
+                        <div onclick="changeLanguage('nl')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
+                            <span class="mr-3 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm"><rect width="900" height="200" fill="#AE1C28"/><rect y="200" width="900" height="200" fill="#ffffff"/><rect y="400" width="900" height="200" fill="#21468B"/></svg>
+                            </span> Dutch
+                        </div>
+
+                        <div onclick="changeLanguage('su')" class="flex items-center px-4 py-2.5 text-sm hover:bg-slate-50 text-slate-600 transition-colors">
+                            <span class="mr-3 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" class="w-5 h-3.5 rounded-[5px] border border-slate-200 shadow-sm"><rect width="600" height="400" fill="#009A44"/><rect y="133.33" width="600" height="133.33" fill="#ffffff"/></svg>
+                            </span> Sundanese
+                        </div>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
-
+    
     <section id="beranda" class="pt-36 pb-20 bg-white relative overflow-hidden">
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row items-center lg:items-start gap-12">
@@ -696,6 +673,22 @@
             document.getElementById('current-flag').innerHTML = flags[lang].svg;
             document.getElementById('current-lang-text').innerText = flags[lang].text;
         }
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth < 768) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                }
+            });
+        });
     </script>
 </body>
 </html>
