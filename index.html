@@ -664,22 +664,25 @@
                 }
             });
 
-            const body = document.getElementById('main-body');
-            if (lang === 'zh') {
-                body.classList.add('lang-zh');
-            } else {
-                body.classList.remove('lang-zh');
-            }
-
             document.getElementById('current-flag').innerHTML = flags[lang].svg;
             document.getElementById('current-lang-text').innerText = flags[lang].text;
+
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (window.innerWidth < 768) { 
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            }
         }
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
         hamburgerBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('flex');
+            } else {
+                mobileMenu.classList.add('flex');
+            }
         });
 
         document.querySelectorAll('#mobile-menu a').forEach(link => {
@@ -690,7 +693,34 @@
                 }
             });
         });
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || e.keyCode === 123) {
+                e.preventDefault();
+            }
+
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.keyCode === 73)) {
+                e.preventDefault();
+            }
+     
+            if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j' || e.keyCode === 74)) {
+                e.preventDefault();
+            }
+
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) {
+                e.preventDefault();
+            }
+
+            if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c' || e.keyCode === 67)) {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>
+
 
